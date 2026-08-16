@@ -24,11 +24,12 @@ export default function LoginPage() {
     }
 
     const [phone, setNickname] = useState("");
-    const [passwordId, setpasswordId] = useState("");
+    const [passwordId, setPasswordId] = useState("");
     const [password, setPassword] = useState("");
     const router = useRouter();
     const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
+        router.push("/");
 
     }
     return (
@@ -86,7 +87,7 @@ export default function LoginPage() {
                                 <FieldLabel htmlFor="password">密码</FieldLabel>
                                 <Input
                                     value={passwordId}
-                                    onChange={e => setpasswordId(e.target.value)}
+                                    onChange={e => setPasswordId(e.target.value)}
                                     className={"h-10 rounded-xl focus-visible:ring-2  focus-visible:ring-zinc-500"}
                                     id="password" placeholder="密码:"/>
 

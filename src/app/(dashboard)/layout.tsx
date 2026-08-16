@@ -6,7 +6,7 @@ import {SidebarInset, SidebarProvider, SidebarTrigger} from "@/components/ui/sid
 import React from "react";
 
 // children：就是各个业务页面，比如device、mission、仪表盘页面
-export default function DashboardLayout({children,}: { children: React.ReactNode;
+export default function DashboardLayout({children}: { children: React.ReactNode;
 }) {
     return (
         <SidebarProvider>

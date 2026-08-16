@@ -156,6 +156,16 @@ export function AppSidebar() {
                                 </SidebarMenuSubItem>
 
                                 <SidebarMenuSubItem>
+                                    <SidebarMenuSubButton  render={
+                                        <Link href="/login">
+                                            <span> 用户登陆</span>
+                                        </Link>
+                                    }>
+
+                                    </SidebarMenuSubButton>
+                                </SidebarMenuSubItem>
+
+                                <SidebarMenuSubItem>
                                     <SidebarMenuSubButton>重置密码</SidebarMenuSubButton>
                                 </SidebarMenuSubItem>
                             </SidebarMenuSub>
