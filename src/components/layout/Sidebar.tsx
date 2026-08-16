@@ -17,7 +17,17 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {Button} from "@/components/ui/button";
-import {AlertCircle, Box, ClipboardList, Cpu,ChevronsUpDown, Settings, ChevronRight, Drone, LayoutDashboard} from "lucide-react";
+import {
+    AlertCircle,
+    Box,
+    ClipboardList,
+    Cpu,
+    ChevronsUpDown,
+    Settings,
+    ChevronRight,
+    Drone,
+    LayoutDashboard, User, ShieldUser
+} from "lucide-react";
 import Link from "next/link";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 
@@ -36,11 +46,13 @@ export function AppSidebar() {
 
             <SidebarContent>
                 <SidebarGroup>
+
                     <SidebarGroupLabel>
-                        无人机管理
+                        管理页面
                     </SidebarGroupLabel>
 
                     <SidebarMenu>
+
 
                         <SidebarMenuItem>
                             <SidebarMenuButton render={
@@ -53,6 +65,35 @@ export function AppSidebar() {
 
                             </SidebarMenuButton>
 
+                        </SidebarMenuItem>
+
+
+                        <SidebarMenuItem>
+                            <SidebarMenuButton
+                                render={
+                                    <Link href="/user">
+                                        <User/>
+                                        <span>用户管理</span>
+                                        <ChevronRight className={"ml-auto"}/>
+                                    </Link>
+                                }
+                            >
+
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+
+                        <SidebarMenuItem>
+                            <SidebarMenuButton
+                                render={
+                                    <Link href="/pilot">
+                                        <ShieldUser />
+                                        <span>飞手管理</span>
+                                        <ChevronRight className={"ml-auto"}/>
+                                    </Link>
+                                }
+                            >
+
+                            </SidebarMenuButton>
                         </SidebarMenuItem>
 
 
@@ -128,9 +169,10 @@ export function AppSidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <DropdownMenu>
-                            <DropdownMenuTrigger className={"flex w-full items-center justify-center gap-4 rounded-md p-2 hover:bg-accent"}>
+                            <DropdownMenuTrigger
+                                className={"flex w-full items-center justify-center gap-4 rounded-md p-2 hover:bg-accent"}>
                                 <Avatar className={"h-8 w-8 rounded-lg"}>
-                                    <AvatarImage  src="" alt="头像" />
+                                    <AvatarImage src="" alt="头像"/>
                                     <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                                 </Avatar>
                                 <div className="grid flex-1 text-left text-sm leading-tight min-w-0">
@@ -138,11 +180,12 @@ export function AppSidebar() {
                                     <span className="truncate text-xs">1535676543</span>
 
                                 </div>
-                                <ChevronsUpDown className={"h-4 w-4 opacity-50 shrink-0"} />
+                                <ChevronsUpDown className={"h-4 w-4 opacity-50 shrink-0"}/>
 
                             </DropdownMenuTrigger>
 
-                            <DropdownMenuContent side={"right"} align={"center"} sideOffset={8} className={"min-w-33 w-33 px-1"} >
+                            <DropdownMenuContent side={"right"} align={"center"} sideOffset={8}
+                                                 className={"min-w-33 w-33 px-1"}>
                                 <DropdownMenuGroup>
                                     <DropdownMenuItem>个人信息</DropdownMenuItem>
                                     <DropdownMenuItem>账单</DropdownMenuItem>

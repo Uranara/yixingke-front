@@ -18,7 +18,7 @@ export default function ClientMao() {
     const is3D = style === "openstreetmap3d";
 
 
-    const [userLocation, setUserLocation] = useState<[number,number]>([121.967896,29.964589]);
+    const [userLocation, setUserLocation] = useState<[number,number]>([121.624540,29.860258]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
