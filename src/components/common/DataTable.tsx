@@ -38,12 +38,12 @@ interface DataTableProps<T> {
 export function DataTable<T>({
                                  columns,
                                  data,
-                                 rowKey = (row, index) => (row as any)?.id ?? index,  // 默认实现
+                                 rowKey = (row, index) => (row as { id?: string | number })?.id ?? index,  // 默认实现
                                  onEdit,
                                  onCopy,
                                  onDelete,
                              }: DataTableProps<T>) {
-    const totalColspan = columns.length +1;
+    const totalColspan = columns.length + 1;
     return (
         <Table>
             <TableHeader>
@@ -84,15 +84,20 @@ export function DataTable<T>({
 
                                 <DropdownMenu>
                                     <DropdownMenuTrigger
-                                        render={
-                                            <Button variant="ghost" size="icon" className="size-8">
+                                        render={(props) =>(
+                                            <Button
+                                                {...props}
+                                                variant="ghost"
+                                                size="icon"
+                                                className="size-8">
                                                 <MoreHorizontalIcon/>
                                                 <span className="sr-only">打开操作菜单</span>
                                             </Button>
-                                        }
-                                    >
+                                            )
 
-                                    </DropdownMenuTrigger>
+                                        }
+                                    />
+
                                     <DropdownMenuContent align="end">
                                         <DropdownMenuItem onClick={() => onEdit?.(item)}>
                                             编辑
