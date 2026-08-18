@@ -1,63 +1,51 @@
 'use client'
-import { MoreHorizontalIcon } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
 import {mockPilotDeviceList} from "@/app/(dashboard)/device/mock";
+import {DataTable, DataTableColumn} from "@/components/common/DataTable";
 
+type DeviceItem = (typeof mockPilotDeviceList)[number]
 
 
 export default function DevicePage() {
+    const columns: DataTableColumn<DeviceItem>[] = [
+        {
+            title: "设备品牌",
+            render: (row) => <span className="font-medium">{row.deviceBrand}</span>,
+        },
+        {
+            title: "设备序列号SN",
+            render: (row) => row.snCode,
+        },
+        {
+            title: "最大载荷(kg)",
+            render: (row) => row.maxPayload ?? "-",
+        },
+        {
+            title: "最大抗风能力(m/s)",
+            render: (row) => row.maxWindResistance ?? "-",
+        },
+    ]
     return (
-        <Table>
-            <TableHeader>
-                <TableRow>
-                    <TableHead>设备品牌</TableHead>
-                    <TableHead>设备序列号SN</TableHead>
-                    <TableHead>最大载荷(kg)</TableHead>
-                    <TableHead>最大抗风能力(m/s)</TableHead>
-                    <TableHead className="text-right">操作</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-
-                {mockPilotDeviceList.map((item,index)=>(
-                    <TableRow key={index}>
-                        <TableCell className="font-medium">{item.deviceBrand}</TableCell>
-                        <TableCell>{item.snCode}</TableCell>
-                        <TableCell>{item.maxPayload ?? "-"}</TableCell>
-                        <TableCell>{item.maxWindResistance ?? "-"}</TableCell>
-                        <TableCell className="text-right">
-                            <DropdownMenu>
-                                <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="size-8"><MoreHorizontalIcon /><span className="sr-only">打开菜单</span></Button>} />
-                                <DropdownMenuContent align="end">
-                                    <DropdownMenuItem>编辑</DropdownMenuItem>
-                                    <DropdownMenuItem>复制</DropdownMenuItem>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuItem variant="destructive">
-                                        删除
-                                    </DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </TableCell>
-                    </TableRow>
-
-                ))}
-
-            </TableBody>
-        </Table>
+            <DataTable
+            columns={columns}
+            data={mockPilotDeviceList}
+            rowKey={(_,idx)=>idx}
+            onEdit={(row) => {
+                console.log("编辑设备", row)
+            }}
+            onCopy={(row) => {
+                console.log("复制设备", row)
+            }}
+            onDelete={(row) => {
+                console.log("删除设备", row)
+            }}
+            />
     )
 }
+
+
+
+
+
+
+
+
