@@ -1,31 +1,10 @@
-import React from "react";
 
+const s = "7s";
 
-type User = {
-    id:number,
-    name:string
-    salary:number
+const reg = /^(\d+)([dhms]?)$/i;
+
+const res = s.match(reg);
+console.log(res);
+if (res) {
+    console.log(res[0])
 }
-
-type DataTableColumn<T> = {
-    title: string
-    alignRight?: boolean
-    render: (row: T) => React.ReactNode
-}
-
-const columns :DataTableColumn<User>[] = [
-    {
-        title:"姓名",
-        render:(row111) => 12
-    }
-]
-
-
-
-
-
-
-
-
-
-
